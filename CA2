@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<html">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script type="text/javascript">
+    function roundit(which) {
+    return Math.round(which * 100) / 100
+}
+
+function cmconvert() {
+    with (document.cminch) {
+        feet.value = roundit(cm.value / 30.84);
+        inch.value = roundit(cm.value / 2.54);
+    }
+}
+
+function inchconvert() {
+    with (document.cminch) {
+        cm.value = roundit(inch.value * 2.54);
+        feet.value = roundit(inch.value / 12);
+    }
+}
+
+function feetconvert() {
+    with (document.cminch) {
+        cm.value = roundit(feet.value * 30.48);
+        inch.value = roundit(feet.value * 12);
+    }
+}
+
+            function apply() {
+                var a = frm.myoption.value;
+                if (a == "Fahrenheit") {
+                    var val = frm.txt.value;
+                    var tf = parseInt(val);
+                    var tc = (5 / 9) * (tf - 32);
+                    var res = Math.round(tc * Math.pow(10, 2)) / Math.pow(10, 2);
+                    frm.txt1.value = res + " C";
+                }
+                else {
+                    var val = frm.txt.value;
+                    var tc = parseInt(val);
+                    var tf = ((9 / 5) * tc) + 32;
+                    var res1 = Math.round(tf * Math.pow(10, 2)) / Math.pow(10, 2);
+                    frm.txt1.value = res1 + " F";
+                }
+            }
+
+</script>
+</head>
+<body>
+<h2>Convertion</h2>
+								<p>Please choose what you are converting. These are the most common measurements:
+                                    Length or Temperature
+                                   </p>
+							</section>
+							
+						</section>
+					<!-- Content -->
+						<section class="6u" id="content">
+						<p>LENGTH CALCULATOR</p>
+                       <form name=cminch>
+        <tr>
+          <td>
+           Length in cm: <input onblur=cmconvert() value=2.54 name=cm>
+          </td>
+        </tr>
+                           <br />
+        <tr>
+          <td>
+            Length in feet: <input onblur=feetconvert() value=0 name=feet> 
+
+          </td>
+        </tr>
+                        <br />
+        <tr>
+          <td>
+            Length in inch: <input onblur=inchconvert() value=1 name=inch> 
+          </td>
+        </tr>
+                           <br />
+        </form>
+      <p align="left"> </p>
+
+          <br />
+     </section>
+					<!-- Right Sidebar -->
+						<section class="3u" id="right-sidebar">
+							<section>
+								<h2>TEMPERATURE CALCULATOR</h2>
+								
+                              
+          <form name="frm">
+        <table>
+            <tr>
+                <td>Temperature</td>
+                <td><input type=text name="txt"></td>
+            </tr>
+            <tr>
+                <td>
+                    <select name="myoption">
+                        <option value="Fahrenheit">F</option>
+                        <option value="Celsius">C</option>
+                    </select>
+                </td>
+
+                <td>
+                    <input type="button" value="Calculate" onclick="apply()">
+                </td>
+            </tr>
+            <tr>
+                <td>Equal Value</td>
+                <td><input type=text name="txt1" size="12" readonly></td>
+                <td></td>
+                
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
